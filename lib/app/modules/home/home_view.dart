@@ -83,7 +83,7 @@ class HomeView extends GetView<HomeController> {
               ),
               GridView.builder(
                 shrinkWrap: true,
-                gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
                   mainAxisSpacing: 6.0,
                   crossAxisSpacing: 6.0,
@@ -99,14 +99,14 @@ class HomeView extends GetView<HomeController> {
                       child: Stack(
                         children: [
                           Positioned.fill(
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Image.network(
-                  images[index],
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
+                            child: Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Image.network(
+                                images[index],
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
                           Positioned(
                             top: 4.0,
                             left: 8.0,
@@ -170,7 +170,7 @@ class HomeView extends GetView<HomeController> {
                     ],
                   ),
                 ],
-              )
+              ),
               
             ],
           ),
