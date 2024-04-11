@@ -171,7 +171,6 @@ class HomeView extends GetView<HomeController> {
                   ),
                 ],
               ),
-              
             ],
           ),
         ),

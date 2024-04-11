@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:samokat/app/data/models/products/product.dart';
 
 class HomeController extends GetxController {
   List<String> images = [
@@ -23,5 +24,32 @@ class HomeController extends GetxController {
     'Хочется\nсладкого',
     'Сейчас сезон',
     'Из других\nстран',
+  ];
+
+  List<Product> products = [
+    Product(
+        name: 'Варёная колбаса\nВязанка, Сливушка',
+        imageUrl:
+            'https://cm.samokat.ru/processed/l/public/40a40ea63defea6a_4680115880269-1.jpg',
+        weight: '375 г',
+        price: 149),
+    Product(
+        name: 'Авокадо хасс Артфрут',
+        imageUrl:
+            'https://cm.samokat.ru/processed/l/product_card/c51c9e44-3a65-4ebb-bd93-c458ed990eb7.jpg',
+        weight: '2 шт',
+        price: 199),
+    Product(
+        name: 'Сосиски Самокат, из\nкуриной грудки',
+        imageUrl:
+            'https://cm.samokat.ru/processed/l/product_card/09db9484-7ae9-4c6e-b9f0-06812d6b6fb8.jpg',
+        weight: '400 г',
+        price: 179),
+    Product(
+        name: 'Творожный сыр\nСамокат, 60%',
+        imageUrl:
+            'https://cm.samokat.ru/processed/l/product_card/1694417323-4680012924264-1-2.jpg',
+        weight: '130 г',
+        price: 99)
   ];
 }
