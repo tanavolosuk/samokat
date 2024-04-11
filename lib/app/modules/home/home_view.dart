@@ -69,70 +69,100 @@ class HomeView extends GetView<HomeController> {
                 ],
               ),
               Container(
-                width: 100,
-                margin: EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.white,
-                      spreadRadius: 0.01,
-                      blurRadius: 20,
-                    ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(
-                            15), // Устанавливаем радиус скругления для изображения
-                        child: Image.network(
-                          'https://cm.samokat.ru/processed/l/public/40a40ea63defea6a_4680115880269-1.jpg',
-                          fit: BoxFit.cover,
-                        ),
+                height: 500, // Задаем фиксированную высоту
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: controller.products.length,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    var product = controller.products[index];
+                    return Container(
+                      width: 110,
+                      height: 120,
+                      margin: EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.white,
+                            spreadRadius: 0.01,
+                            blurRadius: 20,
+                          ),
+                        ],
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'Колбаса',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
+                          Container(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                              child: Image.network(
+                                product.imageUrl,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
-                          SizedBox(height: 4),
-                          Text(
-                            '20 г',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.grey,
-                            ),
-                          ),
-                          SizedBox(height: 8),
-                          Text(
-                            '199 р',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue,
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  product.name,
+                                  style: TextStyle(
+                                    fontSize: 9,
+                                    fontWeight: FontWeight.w600,
+                                    color: Color.fromRGBO(64, 64, 64, 1),
+                                  ), 
+                                ),
+                                Text(
+                                  product.weight,
+                                  style: TextStyle(
+                                    fontSize: 9,
+                                    color: Color.fromRGBO(166, 166, 166, 1),
+                                    fontWeight: FontWeight.w500
+                                  ),
+                                ),
+                                SizedBox(height: 8),
+                                Text(
+                                  '${product.price} р',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.blue,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
                       ),
-                    ),
-                  ],
+                    );
+                  },
                 ),
               ),
+              
             ],
           ),
         ),
       ),
+     floatingActionButton: Align(
+  alignment: Alignment.bottomRight,
+  child: Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 1),
+    child: Container(
+      width: 80,
+      height: 35, 
+      child: FloatingActionButton(
+        onPressed: () {  
+        },
+        child: Text('500', style: TextStyle(color: Colors.white),),
+        backgroundColor: Color.fromRGBO(255,51,95, 1),
+      ),
+    ),
+  ),
+),
+
     );
   }
 }
