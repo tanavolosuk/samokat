@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:samokat/app/modules/home/widgets/nine_fields.dart';
 import 'package:samokat/app/modules/home/widgets/search.dart';
+import 'package:samokat/app/routes/app_pages.dart';
 import 'home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -79,7 +80,7 @@ class HomeView extends GetView<HomeController> {
                     return Container(
                       width: 110,
                       height: 120,
-                      margin: EdgeInsets.all(8),
+                      margin: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         boxShadow: const [
@@ -109,24 +110,23 @@ class HomeView extends GetView<HomeController> {
                               children: [
                                 Text(
                                   product.name,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 9,
                                     fontWeight: FontWeight.w600,
                                     color: Color.fromRGBO(64, 64, 64, 1),
-                                  ), 
+                                  ),
                                 ),
                                 Text(
                                   product.weight,
-                                  style: TextStyle(
-                                    fontSize: 9,
-                                    color: Color.fromRGBO(166, 166, 166, 1),
-                                    fontWeight: FontWeight.w500
-                                  ),
+                                  style: const TextStyle(
+                                      fontSize: 9,
+                                      color: Color.fromRGBO(166, 166, 166, 1),
+                                      fontWeight: FontWeight.w500),
                                 ),
-                                SizedBox(height: 8),
+                                const SizedBox(height: 8),
                                 Text(
                                   '${product.price} р',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.blue,
@@ -141,28 +141,30 @@ class HomeView extends GetView<HomeController> {
                   },
                 ),
               ),
-              
             ],
           ),
         ),
       ),
-     floatingActionButton: Align(
-  alignment: Alignment.bottomRight,
-  child: Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 1),
-    child: Container(
-      width: 80,
-      height: 35, 
-      child: FloatingActionButton(
-        onPressed: () {  
-        },
-        child: Text('500', style: TextStyle(color: Colors.white),),
-        backgroundColor: Color.fromRGBO(255,51,95, 1),
+      floatingActionButton: Align(
+        alignment: Alignment.bottomRight,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 1),
+          child: SizedBox(
+            width: 80,
+            height: 35,
+            child: FloatingActionButton(
+              onPressed: () {
+                Get.offNamed(Routes.ORDER);
+              },
+              backgroundColor: const Color.fromRGBO(255, 51, 95, 1),
+              child: const Text(
+                '500',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ),
+        ),
       ),
-    ),
-  ),
-),
-
     );
   }
 }
