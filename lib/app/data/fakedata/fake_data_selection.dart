@@ -7,7 +7,7 @@ abstract class FakeSelection {
 
 List<Selection> selectionsList = [
   Selection('Выгодная полка', profitableShelf),
-  // Selection('На любой случай'),
-  // Selection('Для особого меню'),
-  // Selection('К чаю и кофе'),
+  Selection('На любой случай', forAnyOccasion),
+  Selection('Взять к завтраку', forBreackfast),
+  Selection('К чаю и кофе', forTeaAndCoffee),
 ];

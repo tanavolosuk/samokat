@@ -48,7 +48,7 @@ MyListView(HomeController controller, int count) {
         ],
       ),
       SizedBox(
-        height: 500,
+        height: 250,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: controller.selections[count].products.length,
