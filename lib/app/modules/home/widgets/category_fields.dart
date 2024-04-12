@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:samokat/app/modules/home/home_controller.dart';
 
-nineFields(HomeController controller) {
+categoryFields(HomeController controller) {
   return GridView.builder(
     shrinkWrap: true,
     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -9,10 +9,10 @@ nineFields(HomeController controller) {
       mainAxisSpacing: 6.0,
       crossAxisSpacing: 6.0,
     ),
-    itemCount: controller.images.length,
+    itemCount: controller.categories.length,
     itemBuilder: (BuildContext context, int index) {
-      var images = controller.images;
-      var texts = controller.texts;
+      var text = controller.categories[index].text;
+      var image = controller.categories[index].imageUrl;
       return ClipRRect(
         borderRadius: BorderRadius.circular(14.0),
         child: Container(
@@ -23,7 +23,7 @@ nineFields(HomeController controller) {
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Image.network(
-                    images[index],
+                    image,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -32,7 +32,7 @@ nineFields(HomeController controller) {
                 top: 4.0,
                 left: 8.0,
                 child: Text(
-                  texts[index],
+                  text,
                   style: const TextStyle(
                     color: Color.fromRGBO(64, 64, 64, 1),
                     fontWeight: FontWeight.bold,

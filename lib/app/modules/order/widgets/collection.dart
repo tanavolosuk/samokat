@@ -61,7 +61,7 @@ collection() {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
@@ -78,7 +78,8 @@ collection() {
                               fontSize: 12),
                           textAlign: TextAlign.start,
                         ),
-                        // Image.asset('images/sbersps.png', width: 5, height: 5),
+                        SizedBox(height: 1,),
+                        Image.asset('assets/images/sbersps.png', width: 11, height: 11),
                       ],
                     ),
                     Text('У вас 286 бонусов - спишем всё',
