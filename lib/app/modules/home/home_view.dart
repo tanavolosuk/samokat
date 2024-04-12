@@ -69,8 +69,8 @@ class HomeView extends GetView<HomeController> {
                   ),
                 ],
               ),
-              Container(
-                height: 500, // Задаем фиксированную высоту
+              SizedBox(
+                height: 500, 
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: controller.products.length,
