@@ -8,15 +8,21 @@ import 'package:samokat/app/data/services/fake_api_services.dart';
 class HomeController extends GetxController {
   FakeApiService fakeApiService = Get.find();
   final selections = RxList<Selection>();
+  final categories = RxList<Category>();
 
    @override
   void onInit() {
+    getSelection();
     getProducts();
     super.onInit();
   }
 
-  List<Category> categories = FakeCategories.categories;
+  //List<Category> categories = FakeCategories.categories;
   //List<Selection> selections = FakeSelection.selections;
+
+  Future<void> getSelection() async {
+    categories.value = await fakeApiService.getCategories();
+  }
 
   Future<void> getProducts() async {
     selections.value = await fakeApiService.getProducts(); 

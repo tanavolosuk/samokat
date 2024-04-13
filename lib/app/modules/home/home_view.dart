@@ -23,8 +23,7 @@ class HomeView extends GetView<HomeController> {
               const SizedBox(
                 height: 12,
               ),
-              
-              categoryFields(controller),
+              Obx(() => categoryFields(controller)),
               const SizedBox(
                 height: 24,
               ),
