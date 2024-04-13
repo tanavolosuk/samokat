@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:samokat/app/data/fakedata/fake_shop_box.dart';
 import 'package:samokat/app/data/models/product.dart';
 import 'package:samokat/app/modules/home/widgets/button_count.dart';
-import 'package:samokat/app/modules/home/widgets/hefgh.dart';
 import 'package:samokat/app/modules/order/widgets/collection.dart';
 import 'package:samokat/app/modules/order/widgets/header.dart';
 import 'package:samokat/app/routes/app_pages.dart';
@@ -33,19 +31,13 @@ class OrderView extends GetView<OrderController> {
                   int count = productData[1];
                   return ListTile(
                     minLeadingWidth: 100,
-                    leading:
-                        // Container(
-                        //   height: 1000,
-                        //   width: 100,
-                        //   child:
-                        ClipRRect(
+                    leading: ClipRRect(
                       borderRadius: BorderRadius.circular(15),
                       child: Image.network(
                         product.imageUrl,
                         fit: BoxFit.cover,
                       ),
                     ),
-                    //),
                     title: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -68,35 +60,20 @@ class OrderView extends GetView<OrderController> {
                         ),
                       ],
                     ),
-                    subtitle:
-                        // knopka(),
-                        // );
-
-                        Container(
-                      height: 25,
-                      width: 80,
-                      child: CustomButton(
-                        value: count,
-                        onPressedMinus: () {
-                          shopBox.remove(product);
-                          controller.getSumm();
-                          controller.getCount();
-                        },
-                        onPressedPlus: () {
-                          shopBox.add(product);
-                          controller.getSumm();
-                          controller.getCount();
-                        },
-                      ),
+                    subtitle: CustomButton(
+                      value: count,
+                      onPressedMinus: () {
+                        controller.decreaseCount(product);
+                      },
+                      onPressedPlus: () {
+                        controller.increaseCount(product);
+                      },
                     ),
-                    trailing: Text('${product.price} ₽'),
+                    trailing: Text('${product.price * count} ₽'),
                   );
                 },
               ),
             ),
-            // const SizedBox(
-            //   height: 50,
-            // ),
             collection(),
             Container(
               width: double.infinity,

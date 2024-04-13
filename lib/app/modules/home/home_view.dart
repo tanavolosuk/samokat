@@ -39,32 +39,29 @@ class HomeView extends GetView<HomeController> {
           ),
         ),
       ),
-      floatingActionButton: Obx(() => Align(
-            alignment: Alignment.bottomRight,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 0, vertical: 1),
-              child: SizedBox(
-                width: 80,
-                height: 35,
-                child: FloatingActionButton(
-                  onPressed: () {
-                    print(shopBox);
-                    Get.offNamed(Routes.ORDER);
-                    // for (var product in controller.shopBox) {
-                    //   print(product.name);
-                    //   print(product.price);
-
-                    // }
-                  },
-                  backgroundColor: const Color.fromRGBO(255, 51, 95, 1),
-                  child: Text(
-                    '${controller.summ}',
-                    style: TextStyle(color: Colors.white),
+      floatingActionButton: controller.summ.value != 0
+          ? Align(
+              alignment: Alignment.bottomRight,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 1),
+                child: SizedBox(
+                  width: 80,
+                  height: 35,
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      print(shopBox);
+                      Get.offNamed(Routes.ORDER);
+                    },
+                    backgroundColor: const Color.fromRGBO(255, 51, 95, 1),
+                    child: Obx(() => Text(
+                          '${controller.summ}',
+                          style: TextStyle(color: Colors.white),
+                        )),
                   ),
                 ),
               ),
-            ),
-          )),
+            )
+          : SizedBox(), // Если summ равно нулю, не отображать кнопку
     );
   }
 }

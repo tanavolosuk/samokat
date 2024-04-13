@@ -12,7 +12,7 @@ class HomeController extends GetxController {
 
   RxInt summ = 0.obs;
 
-   @override
+  @override
   void onInit() {
     getSelection();
     getProducts();
@@ -24,7 +24,7 @@ class HomeController extends GetxController {
   }
 
   Future<void> getProducts() async {
-    selections.value = await fakeApiService.getProducts(); 
+    selections.value = await fakeApiService.getProducts();
   }
 
   RxInt getSumm() {

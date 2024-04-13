@@ -104,14 +104,6 @@ MyListView(HomeController controller, int count) {
                               fontWeight: FontWeight.w500),
                         ),
                         const SizedBox(height: 8),
-                        // Text(
-                        //   '${product.price} р',
-                        //   style: const TextStyle(
-                        //     fontSize: 18,
-                        //     fontWeight: FontWeight.bold,
-                        //     color: Colors.blue,
-                        //   ),
-                        // ),
                         CustomButton(
                           value: product.price,
                           onPressedMinus: () {
@@ -121,11 +113,9 @@ MyListView(HomeController controller, int count) {
                           onPressedPlus: () {
                             shopBox.add(product);
                             controller.getSumm();
+                            
                           },
                         )
-                        // IconButton(onPressed: () {
-                        //   controller.shopBox.add(product);
-                        // }, icon: Icon(Icons.add))
                       ],
                     ),
                   ),

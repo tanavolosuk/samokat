@@ -16,6 +16,9 @@ class OrderController extends GetxController {
   }
 
   void getCount() {
+    productQuantities.clear();
+    productCounts.clear();
+
     for (var product in shopBox) {
       if (productCounts.containsKey(product)) {
         productCounts[product] = productCounts[product]! + 1;
@@ -27,24 +30,26 @@ class OrderController extends GetxController {
     productCounts.forEach((product, count) {
       productQuantities.add([product, count]);
     });
-
     print(productQuantities);
   }
 
   RxInt getSumm() {
-    //summ.value == 0;
+    summ.value = 0;
     for (Product product in shopBox) {
       summ.value += product.price;
     }
     return summ;
   }
 
-  RxInt getCountbyIndex() {
-    for (List<dynamic> productData in productQuantities) {
-      Product product = productData[0];
-      count = productData[1];
-      return count;
-    }
-    throw Exception("No matching data found");
+  void increaseCount(Product product) {
+    shopBox.add(product);
+    getCount();
+    getSumm();
+  }
+
+  void decreaseCount(Product product) {
+    shopBox.remove(product);
+    getCount();
+    getSumm();
   }
 }
