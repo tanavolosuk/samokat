@@ -23,16 +23,18 @@ class HomeView extends GetView<HomeController> {
               const SizedBox(
                 height: 12,
               ),
+              
               categoryFields(controller),
               const SizedBox(
                 height: 24,
               ),
-              ListView.builder(
-                itemCount: controller.selections.length,
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  return MyListView(controller, index);
-                },),
+              Obx(() => ListView.builder(
+                    itemCount: controller.selections.length,
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return MyListView(controller, index);
+                    },
+                  )),
             ],
           ),
         ),
