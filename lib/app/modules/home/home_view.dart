@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:samokat/app/data/fakedata/fake_shop_box.dart';
 import 'package:samokat/app/modules/home/widgets/list_view.dart';
 import 'package:samokat/app/modules/home/widgets/category_fields.dart';
 import 'package:samokat/app/modules/home/widgets/search.dart';
@@ -38,26 +39,32 @@ class HomeView extends GetView<HomeController> {
           ),
         ),
       ),
-      floatingActionButton: Align(
-        alignment: Alignment.bottomRight,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 1),
-          child: SizedBox(
-            width: 80,
-            height: 35,
-            child: FloatingActionButton(
-              onPressed: () {
-                Get.offNamed(Routes.ORDER);
-              },
-              backgroundColor: const Color.fromRGBO(255, 51, 95, 1),
-              child: const Text(
-                '500',
-                style: TextStyle(color: Colors.white),
+      floatingActionButton: Obx(() => Align(
+            alignment: Alignment.bottomRight,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 0, vertical: 1),
+              child: SizedBox(
+                width: 80,
+                height: 35,
+                child: FloatingActionButton(
+                  onPressed: () {
+                    print(shopBox);
+                    Get.offNamed(Routes.ORDER);
+                    // for (var product in controller.shopBox) {
+                    //   print(product.name);
+                    //   print(product.price);
+
+                    // }
+                  },
+                  backgroundColor: const Color.fromRGBO(255, 51, 95, 1),
+                  child: Text(
+                    '${controller.summ}',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
               ),
             ),
-          ),
-        ),
-      ),
+          )),
     );
   }
 }

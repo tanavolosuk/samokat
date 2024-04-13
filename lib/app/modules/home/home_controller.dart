@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:samokat/app/data/fakedata/fake_data_categories.dart';
-import 'package:samokat/app/data/fakedata/fake_data_selection.dart';
+import 'package:samokat/app/data/fakedata/fake_shop_box.dart';
 import 'package:samokat/app/data/models/category.dart';
+import 'package:samokat/app/data/models/product.dart';
 import 'package:samokat/app/data/models/selection.dart';
 import 'package:samokat/app/data/services/fake_api_services.dart';
 
@@ -10,6 +10,8 @@ class HomeController extends GetxController {
   final selections = RxList<Selection>();
   final categories = RxList<Category>();
 
+  RxInt summ = 0.obs;
+
    @override
   void onInit() {
     getSelection();
@@ -17,14 +19,19 @@ class HomeController extends GetxController {
     super.onInit();
   }
 
-  //List<Category> categories = FakeCategories.categories;
-  //List<Selection> selections = FakeSelection.selections;
-
   Future<void> getSelection() async {
     categories.value = await fakeApiService.getCategories();
   }
 
   Future<void> getProducts() async {
     selections.value = await fakeApiService.getProducts(); 
+  }
+
+  RxInt getSumm() {
+    summ.value = 0;
+    for (Product product in shopBox) {
+      summ.value += product.price;
+    }
+    return summ;
   }
 }

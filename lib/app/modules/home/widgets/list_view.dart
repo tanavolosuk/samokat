@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:samokat/app/data/fakedata/fake_shop_box.dart';
 import 'package:samokat/app/modules/home/home_controller.dart';
+import 'package:samokat/app/modules/home/widgets/button_count.dart';
 
 MyListView(HomeController controller, int count) {
   return Column(
@@ -102,14 +104,28 @@ MyListView(HomeController controller, int count) {
                               fontWeight: FontWeight.w500),
                         ),
                         const SizedBox(height: 8),
-                        Text(
-                          '${product.price} р',
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue,
-                          ),
-                        ),
+                        // Text(
+                        //   '${product.price} р',
+                        //   style: const TextStyle(
+                        //     fontSize: 18,
+                        //     fontWeight: FontWeight.bold,
+                        //     color: Colors.blue,
+                        //   ),
+                        // ),
+                        CustomButton(
+                          value: product.price,
+                          onPressedMinus: () {
+                            shopBox.remove(product);
+                            controller.getSumm();
+                          },
+                          onPressedPlus: () {
+                            shopBox.add(product);
+                            controller.getSumm();
+                          },
+                        )
+                        // IconButton(onPressed: () {
+                        //   controller.shopBox.add(product);
+                        // }, icon: Icon(Icons.add))
                       ],
                     ),
                   ),
