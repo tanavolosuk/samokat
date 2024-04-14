@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class CustomButton extends StatelessWidget {
+class CustomButton2 extends StatelessWidget {
   final int value;
   final VoidCallback onPressedMinus;
   final VoidCallback onPressedPlus;
 
-  const CustomButton({
+  const CustomButton2({
     Key? key,
     required this.value,
     required this.onPressedMinus,
@@ -23,37 +23,38 @@ class CustomButton extends StatelessWidget {
         minWidth: 80.0,
       ),
       decoration: BoxDecoration(
-        color: const Color.fromRGBO(255, 51, 95, 1),
+        color: Color.fromRGBO(255, 51, 95, 1),
         borderRadius: BorderRadius.circular(25.0),
       ),
+      //padding: EdgeInsets.all(12.0),
       child: Padding(
         padding: const EdgeInsets.all(5.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             GestureDetector(
-              onTap: onPressedMinus,
-              child: const Icon(
+              child: Icon(
                 Icons.remove,
                 color: Colors.white,
                 size: 18,
               ),
+              onTap: onPressedMinus,
             ),
             Text(
               '$value',
-              style: const TextStyle(
+              style: TextStyle(
                 color: Colors.white,
                 fontSize: 11,
                 fontWeight: FontWeight.w500,
               ),
             ),
             GestureDetector(
-              onTap: onPressedPlus,
-              child: const Icon(
+              child: Icon(
                 Icons.add,
                 color: Colors.white,
                 size: 18,
               ),
+              onTap: onPressedPlus,
             ),
           ],
         ),

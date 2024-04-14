@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:samokat/app/data/models/product.dart';
-import 'package:samokat/app/modules/home/widgets/button_count.dart';
 import 'package:samokat/app/modules/order/order_controller.dart';
+import 'package:samokat/app/modules/order/widgets/custom_button2.dart';
 
 buildProductCard(Product product, int count, OrderController controller) {
   return Container(
@@ -53,7 +53,7 @@ buildProductCard(Product product, int count, OrderController controller) {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  CustomButton(
+                  CustomButton2(
                     value: count,
                     onPressedMinus: () {
                       controller.decreaseCount(product);
