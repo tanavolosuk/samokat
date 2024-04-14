@@ -113,7 +113,6 @@ MyListView(HomeController controller, int count) {
                           onPressedPlus: () {
                             shopBox.add(product);
                             controller.getSumm();
-                            
                           },
                         )
                       ],

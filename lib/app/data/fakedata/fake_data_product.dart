@@ -44,7 +44,7 @@ List<Product> forAnyOccasion = [
       '150 г',
       356),
   Product(
-      'Из Грузии: Лимонад\nZandukeli, крем-сода',
+      'Из Грузии: Лимонад\nZandukeli, сода',
       'https://cm.samokat.ru/processed/l/product_card/026c9f81-49ab-4d76-acd4-342dafc2e923.jpg',
       '0.5 л',
       126),
@@ -80,7 +80,7 @@ List<Product> forTeaAndCoffee = [
       '45 г',
       129),
   Product(
-      'Шоколадные батончики Snickers, Minis',
+      'Батончики Snickers, Minis',
       'https://cm.samokat.ru/processed/l/public/042288a8a8ba9e74_4607065000073.jpg',
       '180 г',
       239),
@@ -90,7 +90,7 @@ List<Product> forTeaAndCoffee = [
       '87 г',
       215),
   Product(
-      'Батончик Самокат, шоколадный, с печеньем',
+      'Батончик Самокат, шоколадный',
       'https://cm.samokat.ru/processed/l/product_card/abba2642-da10-4aa0-8047-10b70dd8df86.jpg',
       '45 г',
       183),

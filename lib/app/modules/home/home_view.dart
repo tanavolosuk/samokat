@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:samokat/app/data/fakedata/fake_shop_box.dart';
 import 'package:samokat/app/modules/home/widgets/list_view.dart';
 import 'package:samokat/app/modules/home/widgets/category_fields.dart';
 import 'package:samokat/app/modules/home/widgets/search.dart';
@@ -39,29 +38,39 @@ class HomeView extends GetView<HomeController> {
           ),
         ),
       ),
-      floatingActionButton: controller.summ.value != 0
-          ? Align(
-              alignment: Alignment.bottomRight,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 1),
+      floatingActionButton: Obx(
+        () => controller.summ.value == 0
+            ? const SizedBox.shrink()
+            : Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 1),
                 child: SizedBox(
                   width: 80,
                   height: 35,
                   child: FloatingActionButton(
                     onPressed: () {
-                      print(shopBox);
                       Get.offNamed(Routes.ORDER);
                     },
                     backgroundColor: const Color.fromRGBO(255, 51, 95, 1),
-                    child: Obx(() => Text(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
                           '${controller.summ}',
                           style: TextStyle(color: Colors.white),
-                        )),
+                        ),
+                        const Text(
+                          '15 минут',
+                          style: TextStyle(
+                              fontSize: 9,
+                              color: Color.fromARGB(255, 255, 153, 175),
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            )
-          : SizedBox(), // Если summ равно нулю, не отображать кнопку
+      ),
     );
   }
 }
