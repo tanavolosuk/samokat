@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:samokat/app/data/models/product.dart';
-import 'package:samokat/app/modules/home/widgets/button_count.dart';
+import 'package:samokat/app/modules/order/widgets/build_product_card.dart';
 import 'package:samokat/app/modules/order/widgets/collection.dart';
 import 'package:samokat/app/modules/order/widgets/header.dart';
 import 'package:samokat/app/routes/app_pages.dart';
@@ -29,48 +29,7 @@ class OrderView extends GetView<OrderController> {
                       controller.productQuantities[index];
                   Product product = productData[0];
                   int count = productData[1];
-                  return ListTile(
-                    minLeadingWidth: 100,
-                    leading: ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
-                      child: Image.network(
-                        product.imageUrl,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    title: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          product.name,
-                          style: const TextStyle(
-                            fontSize: 9,
-                            fontWeight: FontWeight.w600,
-                            color: Color.fromRGBO(64, 64, 64, 1),
-                          ),
-                          textAlign: TextAlign.start,
-                        ),
-                        Text(
-                          product.weight,
-                          style: const TextStyle(
-                              fontSize: 9,
-                              color: Color.fromRGBO(166, 166, 166, 1),
-                              fontWeight: FontWeight.w500),
-                          textAlign: TextAlign.start,
-                        ),
-                      ],
-                    ),
-                    subtitle: CustomButton(
-                      value: count,
-                      onPressedMinus: () {
-                        controller.decreaseCount(product);
-                      },
-                      onPressedPlus: () {
-                        controller.increaseCount(product);
-                      },
-                    ),
-                    trailing: Text('${product.price * count} ₽'),
-                  );
+                  return buildProductCard(product, count, controller);
                 },
               ),
             ),
@@ -95,7 +54,7 @@ class OrderView extends GetView<OrderController> {
                       ),
                       Text(
                         '${controller.summ.value} ₽',
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Color.fromRGBO(64, 64, 64, 1),
                             fontWeight: FontWeight.bold,
                             fontSize: 24),
@@ -108,8 +67,8 @@ class OrderView extends GetView<OrderController> {
                             Get.offNamed(Routes.HOME);
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color.fromRGBO(255, 51, 95, 1),
-                            minimumSize: Size(250, 56),
+                            backgroundColor: const Color.fromRGBO(255, 51, 95, 1),
+                            minimumSize: const Size(250, 56),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(25),
                             ),

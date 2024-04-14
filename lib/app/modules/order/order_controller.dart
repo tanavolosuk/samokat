@@ -30,7 +30,6 @@ class OrderController extends GetxController {
     productCounts.forEach((product, count) {
       productQuantities.add([product, count]);
     });
-    print(productQuantities);
   }
 
   RxInt getSumm() {
