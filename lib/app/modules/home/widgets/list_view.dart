@@ -106,28 +106,42 @@ MyListView(HomeController controller, int count) {
                               fontWeight: FontWeight.w500),
                         ),
                         const SizedBox(height: 8),
-                        Obx(() => Container(
-                          height: 25,
-                          width: 80,
+                        Obx(() {
+                          final productCount =
+                              controller.productCounts[product];
+                          return Container(
+                            height: 25,
+                            width: 80,
                             decoration: BoxDecoration(
-                              color: countProduct > 0
-                                  ? const Color.fromRGBO(255, 51, 95, 1)
-                                  : const Color.fromRGBO(166, 166, 166, 1),
+                              color:
+                                  productCount != null && productCount.value > 0
+                                      ? const Color.fromRGBO(255, 51, 95, 1)
+                                      : const Color.fromRGBO(242, 242, 242, 1),
                               borderRadius: BorderRadius.circular(25.0),
                             ),
-                            child: button(() {
-                              shopBox.remove(product);
-                              shopBox.add(product);
-                              controller.getSumm();
-                              controller.decreaseCount(product);
-                              controller.getCountforWidget(product);
-                            }, () {
-                              shopBox.add(product);
-                              shopBox.remove(product);
-                              controller.getSumm();
-                              controller.increaseCount(product);
-                              controller.getCountforWidget(product);
-                            }, '${product.price}', controller, countProduct)))
+                            child: button(
+                              () {
+                                shopBox.remove(product);
+                                shopBox.add(product);
+                                controller.getSumm();
+                                controller.decreaseCount(product);
+                                controller.getCountforWidget(product);
+                              },
+                              () {
+                                shopBox.add(product);
+                                shopBox.remove(product);
+                                controller.getSumm();
+                                controller.increaseCount(product);
+                                controller.getCountforWidget(product);
+                              },
+                              '${product.price}',
+                              controller,
+                              productCount ??
+                                  RxInt(
+                                      0), // Присваиваем RxInt(0) при productCount == null
+                            ),
+                          );
+                        })
                       ],
                     ),
                   ),

@@ -11,9 +11,11 @@ class HomeController extends GetxController {
   final categories = RxList<Category>();
 
   RxInt summ = 0.obs;
-  Map<Product, int> productCounts = {};
+  //Map<Product, int> productCounts = {};
   final productQuantities = RxList<List<dynamic>>();
   RxInt count = 0.obs;
+  RxMap<Product, RxInt> productCounts = <Product, RxInt>{}.obs;
+
 
   @override
   void onInit() {
@@ -47,22 +49,15 @@ class HomeController extends GetxController {
   }
 
   void getCount() {
-    productQuantities.clear();
-    productCounts.clear();
-
-    for (var product in shopBox) {
-      if (productCounts.containsKey(product)) {
-        productCounts[product] = productCounts[product]! + 1;
-      } else {
-        productCounts[product] = 1;
-      }
+  productCounts.clear();
+  for (var product in shopBox) {
+    if (productCounts.containsKey(product)) {
+      productCounts[product]!.value++;
+    } else {
+      productCounts[product] = 1.obs;
     }
-
-    productCounts.forEach((product, count) {
-      productQuantities.add([product, count]);
-    });
-    print(productQuantities);
   }
+}
 
   void increaseCount(Product product) {
     shopBox.add(product);
