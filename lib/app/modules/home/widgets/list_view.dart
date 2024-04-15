@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:samokat/app/data/fakedata/fake_shop_box.dart';
 import 'package:samokat/app/modules/home/home_controller.dart';
 import 'package:samokat/app/modules/home/widgets/button_count.dart';
@@ -57,6 +58,7 @@ MyListView(HomeController controller, int count) {
           shrinkWrap: true,
           itemBuilder: (context, index) {
             var product = controller.selections[count].products[index];
+            var countProduct = controller.count;
             return Container(
               width: 110,
               height: 120,
@@ -104,17 +106,28 @@ MyListView(HomeController controller, int count) {
                               fontWeight: FontWeight.w500),
                         ),
                         const SizedBox(height: 8),
-                        CustomButton(
-                          value: product.price,
-                          onPressedMinus: () {
-                            shopBox.remove(product);
-                            controller.getSumm();
-                          },
-                          onPressedPlus: () {
-                            shopBox.add(product);
-                            controller.getSumm();
-                          },
-                        )
+                        Obx(() => Container(
+                          height: 25,
+                          width: 80,
+                            decoration: BoxDecoration(
+                              color: countProduct > 0
+                                  ? const Color.fromRGBO(255, 51, 95, 1)
+                                  : const Color.fromRGBO(166, 166, 166, 1),
+                              borderRadius: BorderRadius.circular(25.0),
+                            ),
+                            child: button(() {
+                              shopBox.remove(product);
+                              shopBox.add(product);
+                              controller.getSumm();
+                              controller.decreaseCount(product);
+                              controller.getCountforWidget(product);
+                            }, () {
+                              shopBox.add(product);
+                              shopBox.remove(product);
+                              controller.getSumm();
+                              controller.increaseCount(product);
+                              controller.getCountforWidget(product);
+                            }, '${product.price}', controller, countProduct)))
                       ],
                     ),
                   ),

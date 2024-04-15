@@ -11,12 +11,23 @@ class HomeController extends GetxController {
   final categories = RxList<Category>();
 
   RxInt summ = 0.obs;
+  Map<Product, int> productCounts = {};
+  final productQuantities = RxList<List<dynamic>>();
+  RxInt count = 0.obs;
 
   @override
   void onInit() {
     getSelection();
     getProducts();
     super.onInit();
+  }
+
+  RxInt getCountforWidget(Product product) {
+    count.value = productQuantities
+      .where((item) =>
+          item[0].name == product.name && item[0].weight == product.weight)
+      .fold(0, (total, current) => total + (current[1] as int));
+    return count;
   }
 
   Future<void> getSelection() async {
@@ -33,5 +44,35 @@ class HomeController extends GetxController {
       summ.value += product.price;
     }
     return summ;
+  }
+
+  void getCount() {
+    productQuantities.clear();
+    productCounts.clear();
+
+    for (var product in shopBox) {
+      if (productCounts.containsKey(product)) {
+        productCounts[product] = productCounts[product]! + 1;
+      } else {
+        productCounts[product] = 1;
+      }
+    }
+
+    productCounts.forEach((product, count) {
+      productQuantities.add([product, count]);
+    });
+    print(productQuantities);
+  }
+
+  void increaseCount(Product product) {
+    shopBox.add(product);
+    getCount();
+    getSumm();
+  }
+
+  void decreaseCount(Product product) {
+    shopBox.remove(product);
+    getCount();
+    getSumm();
   }
 }
