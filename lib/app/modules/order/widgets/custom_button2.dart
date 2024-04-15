@@ -23,7 +23,7 @@ class CustomButton2 extends StatelessWidget {
         minWidth: 80.0,
       ),
       decoration: BoxDecoration(
-        color: Color.fromRGBO(255, 51, 95, 1),
+        color: const Color.fromRGBO(255, 51, 95, 1),
         borderRadius: BorderRadius.circular(25.0),
       ),
       //padding: EdgeInsets.all(12.0),
@@ -33,28 +33,28 @@ class CustomButton2 extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             GestureDetector(
-              child: Icon(
+              onTap: onPressedMinus,
+              child: const Icon(
                 Icons.remove,
                 color: Colors.white,
                 size: 18,
               ),
-              onTap: onPressedMinus,
             ),
             Text(
               '$value',
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 11,
                 fontWeight: FontWeight.w500,
               ),
             ),
             GestureDetector(
-              child: Icon(
+              onTap: onPressedPlus,
+              child: const Icon(
                 Icons.add,
                 color: Colors.white,
                 size: 18,
               ),
-              onTap: onPressedPlus,
             ),
           ],
         ),

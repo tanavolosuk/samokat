@@ -31,7 +31,7 @@ class HomeView extends GetView<HomeController> {
                     itemCount: controller.selections.length,
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
-                      return MyListView(controller, index);
+                      return myListView(controller, index);
                     },
                   )),
             ],
@@ -56,7 +56,7 @@ class HomeView extends GetView<HomeController> {
                       children: [
                         Text(
                           '${controller.summ}',
-                          style: TextStyle(color: Colors.white),
+                          style: const TextStyle(color: Colors.white),
                         ),
                         const Text(
                           '15 минут',

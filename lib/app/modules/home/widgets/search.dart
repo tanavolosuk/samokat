@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 search() {
-  return Container(
+  return SizedBox(
     height: 40,
     child: ClipRRect(
       borderRadius: BorderRadius.circular(14.0),

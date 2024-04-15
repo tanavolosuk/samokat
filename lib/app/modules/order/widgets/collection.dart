@@ -70,7 +70,7 @@ collection() {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           'СберСпасибо',
                           style: TextStyle(
                               color: Color.fromRGBO(64, 64, 64, 1),
@@ -78,11 +78,11 @@ collection() {
                               fontSize: 12),
                           textAlign: TextAlign.start,
                         ),
-                        SizedBox(height: 1,),
+                        const SizedBox(height: 1,),
                         Image.asset('assets/images/sbersps.png', width: 11, height: 11),
                       ],
                     ),
-                    Text('У вас 286 бонусов - спишем всё',
+                    const Text('У вас 286 бонусов - спишем всё',
                         style: TextStyle(
                             color: Color.fromRGBO(166, 166, 166, 1),
                             fontSize: 11,

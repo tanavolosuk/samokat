@@ -4,7 +4,7 @@ import 'package:samokat/app/data/fakedata/fake_shop_box.dart';
 import 'package:samokat/app/modules/home/home_controller.dart';
 import 'package:samokat/app/modules/home/widgets/button_count.dart';
 
-MyListView(HomeController controller, int count) {
+myListView(HomeController controller, int count) {
   return Column(
     children: [
       Row(
@@ -58,7 +58,6 @@ MyListView(HomeController controller, int count) {
           shrinkWrap: true,
           itemBuilder: (context, index) {
             var product = controller.selections[count].products[index];
-            var countProduct = controller.count;
             return Container(
               width: 110,
               height: 120,
@@ -76,13 +75,11 @@ MyListView(HomeController controller, int count) {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
-                      child: Image.network(
-                        product.imageUrl,
-                        fit: BoxFit.cover,
-                      ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Image.network(
+                      product.imageUrl,
+                      fit: BoxFit.cover,
                     ),
                   ),
                   Padding(
@@ -138,7 +135,7 @@ MyListView(HomeController controller, int count) {
                               controller,
                               productCount ??
                                   RxInt(
-                                      0), // Присваиваем RxInt(0) при productCount == null
+                                      0),
                             ),
                           );
                         })

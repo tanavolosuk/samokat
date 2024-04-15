@@ -34,7 +34,7 @@ button(
                 size: 18,
               ),
             ),
-          SizedBox(
+          const SizedBox(
             width: 2,
           ),
           Text(
@@ -45,7 +45,7 @@ button(
               fontWeight: FontWeight.w500,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 2,
           ),
           GestureDetector(
