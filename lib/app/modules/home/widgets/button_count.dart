@@ -9,6 +9,9 @@ button(
   HomeController controller,
   RxInt? countProduct, // Используем тип RxInt?
 ) {
+  Color textColor = countProduct != null && countProduct.value != 0
+      ? Colors.white
+      : Colors.pink;
   return Container(
     width: 80,
     constraints: const BoxConstraints(
@@ -21,7 +24,8 @@ button(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (countProduct != null && countProduct.value != 0) // Проверяем на null
+          if (countProduct != null &&
+              countProduct.value != 0) // Проверяем на null
             GestureDetector(
               onTap: onPressedMinus,
               child: const Icon(
@@ -30,21 +34,25 @@ button(
                 size: 18,
               ),
             ),
-          SizedBox(width: 2,),
+          SizedBox(
+            width: 2,
+          ),
           Text(
             value,
-            style: const TextStyle(
-              color: Colors.white,
+            style: TextStyle(
+              color: textColor,
               fontSize: 11,
               fontWeight: FontWeight.w500,
             ),
           ),
-          SizedBox(width: 2,),
+          SizedBox(
+            width: 2,
+          ),
           GestureDetector(
             onTap: onPressedPlus,
-            child: const Icon(
+            child: Icon(
               Icons.add,
-              color: Colors.white,
+              color: textColor,
               size: 18,
             ),
           ),
