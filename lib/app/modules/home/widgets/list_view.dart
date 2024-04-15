@@ -58,6 +58,7 @@ myListView(HomeController controller, int count) {
           shrinkWrap: true,
           itemBuilder: (context, index) {
             var product = controller.selections[count].products[index];
+            //final countProduct = controller.productCounts[product];
             return Container(
               width: 110,
               height: 120,
@@ -75,13 +76,54 @@ myListView(HomeController controller, int count) {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                    child: Image.network(
-                      product.imageUrl,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                  Obx(() {
+                    // Получаем доступ к текущему количеству продукта
+                    final countProduct = controller.productCounts[product];
+                    if (countProduct != null && countProduct.value > 0) {
+                      return Stack(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(15),
+                            child: Image.network(
+                              product.imageUrl,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Positioned(
+                            left: 0,
+                            right: 0,
+                            top: 0,
+                            bottom: 0,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.black.withOpacity(0.4),
+                                borderRadius: BorderRadius.circular(15)
+                              ),
+                              //padding: EdgeInsets.all(4),
+                              alignment: Alignment.center,
+                              child: Text(
+                                '${countProduct.value}',
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 24
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    } else {
+                      return ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child: Image.network(
+                          product.imageUrl,
+                          fit: BoxFit.cover,
+                        ),
+                      ); // Возвращаем пустой контейнер, если количество равно 0
+                    }
+                  }),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
@@ -133,9 +175,7 @@ myListView(HomeController controller, int count) {
                               },
                               '${product.price}',
                               controller,
-                              productCount ??
-                                  RxInt(
-                                      0),
+                              productCount ?? RxInt(0),
                             ),
                           );
                         })
