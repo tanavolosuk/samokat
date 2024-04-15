@@ -7,7 +7,7 @@ button(
   VoidCallback onPressedPlus,
   String value,
   HomeController controller,
-  RxInt? countProduct, // Используем тип RxInt?
+  RxInt? countProduct, 
 ) {
   Color textColor = countProduct != null && countProduct.value != 0
       ? Colors.white
@@ -25,7 +25,7 @@ button(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           if (countProduct != null &&
-              countProduct.value != 0) // Проверяем на null
+              countProduct.value != 0) 
             GestureDetector(
               onTap: onPressedMinus,
               child: const Icon(

@@ -11,7 +11,6 @@ class HomeController extends GetxController {
   final categories = RxList<Category>();
 
   RxInt summ = 0.obs;
-  //Map<Product, int> productCounts = {};
   final productQuantities = RxList<List<dynamic>>();
   RxInt count = 0.obs;
   RxMap<Product, RxInt> productCounts = <Product, RxInt>{}.obs;
